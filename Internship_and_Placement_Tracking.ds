@@ -1,0 +1,3498 @@
+/*
+ * Author       : vvarnika2006
+ * Generated on : 10-Nov-2026 22:47:05
+ * Version      : 1.0
+ */
+ application "Internship and Placement Tracking"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "UTC"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form Company_Registration
+		{
+			displayname = "Company Registration."
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Company_Name
+			(
+    			type = text
+				displayname = "Company Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Industry
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Information Technology (IT)","Software Development","Banking and Finance","Telecommunications","Manufacturing","Education","E-commerce","Media and Entertainment"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Contact_Person
+			(
+    			type = text
+				displayname = "Contact Person"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Contact_Email
+			(
+    			type = email
+				displayname = "Contact Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Contact_Phone
+			(
+    			type = phonenumber
+				displayname = "Contact Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Company_Website
+			(
+    			type = url
+				displayname = "Company Website"
+				enable  linkname
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Company_Address
+			(
+    			type = address
+				displayname = "Company Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Company_Description
+			(
+    			type = textarea
+				displayname = "Company Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Internship_Opportunity
+		{
+			displayname = "Internship Opportunity"
+			success message = "Internship Opportunity Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Internship_Title
+			(
+    			type = text
+				displayname = "Internship Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Company_name
+			(
+				type = picklist	
+				displayname = "Company name"
+				values  = Company_Registration.ID
+    			displayformat = [Company_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Job_Description
+			(
+    			type = textarea
+				displayname = "Job Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Stipend
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Start_Date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have End_Date
+			(
+    			type = date
+				displayname = "End Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Location
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Status
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Open","Closed","Filled","On hold"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Internship_Progress_Tracking
+		{
+			displayname = "Internship Progress Tracking"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have student_application
+			(
+				type = picklist	
+				displayname = "Student Application"
+				values  = Student_Application.ID
+    			displayformat = [ID]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have internship_opportunity
+			(
+				type = picklist	
+				displayname = "Internship Opportunity"
+				values  = Internship_Opportunity.ID
+    			displayformat = [ID]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have progress_update_date
+			(
+    			type = date
+				displayname = "Progress Update Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			tasks_completed
+			(
+    			type = textarea
+				displayname = "Tasks Completed"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			skills_learned
+			(
+    			type = textarea
+				displayname = "Skills Learned"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have progress_percentage
+			(
+				type = number
+				displayname = "Progress Percentage"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			mentor_comments
+			(
+    			type = textarea
+				displayname = "Mentor Comments"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have internship_status
+			(
+				type = picklist
+				displayname = "Internship Status"
+				maxchar = 100
+				values = {"Not Started","In Progress","Completed","Discontinued"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_by
+			(
+    			type = picklist
+				displayname = "Created By"
+				module = users
+				displayformat = [username]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			last_modified_date
+			(
+    			type = datetime
+				displayname = "Last Modified Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Interview_Scheduling
+		{
+			displayname = "Interview Scheduling"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Student_Application
+			(
+				type = picklist	
+				displayname = "Student Application"
+				values  = Student_Application.ID
+    			displayformat = [Opportunity_Type]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Interview_Date
+			(
+    			type = date
+				displayname = "Interview Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Interview_Time
+			(
+    			type = time
+				displayname = "Interview Time"
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Interview_Mode
+			(
+				type = picklist
+				displayname = "Interview Mode"
+				maxchar = 100
+				values = {"Online","Offline","Hybrid"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Interview_Round
+			(
+				type = picklist
+				displayname = "Interview Round"
+				maxchar = 100
+				values = {"Aptitude Test","Technical Round","HR Round","Final Round"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Interview_Link_Venue
+			(
+    			type = text
+				displayname = "Interview Link / Venue"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Interview_Status
+			(
+				type = picklist
+				displayname = "Interview Status"
+				maxchar = 100
+				values = {"Scheduled","Completed","Rescheduled","Cancelled"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Interview_Feedback
+			(
+    			type = textarea
+				displayname = "Interview Feedback"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Placement_and_Offer_Details
+		{
+			displayname = "Placement and Offer Details"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Student_Application
+			(
+				type = picklist	
+				displayname = "Student Application"
+				values  = Student_Application.ID
+    			displayformat = [ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Company_Name
+			(
+				type = picklist	
+				displayname = "Company Name"
+				values  = Company_Registration.ID
+    			displayformat = [Company_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Job_Title
+			(
+    			type = text
+				displayname = "Job Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Salary_Package_LPA
+			(
+				type = number
+				displayname = "Salary Package (LPA)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Offer_Date
+			(
+    			type = date
+				displayname = "Offer Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Joining_Date
+			(
+    			type = date
+				displayname = "Joining Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Offer_Status
+			(
+				type = picklist
+				displayname = "Offer Status"
+				maxchar = 100
+				values = {"Offered","Accepted","Rejected","Joined","Withdrawn"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Offer_Letter
+			(
+    			type = upload file
+				displayname = "Offer Letter"
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Remarks
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Placement_Opportunity
+		{
+			displayname = "Placement Opportunity"
+			success message = "Placement Opportunity Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Job_Title
+			(
+    			type = text
+				displayname = "Job Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Company_Registration
+			(
+				type = picklist	
+				displayname = "Company Registration."
+				values  = Company_Registration.ID
+    			displayformat = [Company_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Job_Description
+			(
+    			type = textarea
+				displayname = "Job Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Minimum_CGPA
+			(
+				type = decimal
+				displayname = "Minimum CGPA"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Salary_Package_LPA
+			(
+				type = number
+				displayname = "Salary Package (LPA)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Job_Location
+			(
+    			type = text
+				displayname = "Job Location"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Application_Deadline
+			(
+    			type = date
+				displayname = "Application Deadline"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Job_Type
+			(
+				type = picklist
+				displayname = "Job Type"
+				maxchar = 100
+				values = {"Full-time","Part-time","Graduate Trainee Trainee"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Status
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Open","Closed","Filled","On hold"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Self_Service_Form
+		{
+			displayname = "Self Service Form"
+			success message = "Self Service Added Successfully"
+			What_do_you_want_to_do1
+			(
+				type = section
+				displayname = "What do you want to do?"
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			plain1
+			(
+    			type = plaintext
+				value = "<p style=\"margin: 0px 0px 0pt; line-height: 1.2; text-align: left; direction: ltr\" class=\"zw-paragraph heading0\"><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; vertical-align: baseline; font-weight: 400\">💡 </span><span class=\"size\" style=\"font-size: 12pt; font-weight: 600; vertical-align: baseline\">Creator tip:</span><span class=\"size\" style=\"font-size: 12pt; vertical-align: baseline; font-weight: 400\"> Use this sample form to capture data. Below is an example of how it may look.</span></span></span><br /></p><p style=\"margin: 0px 0px 0pt; line-height: 1.2; text-align: left; direction: ltr\" class=\"zw-paragraph heading0\"><br /></p><div><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; vertical-align: baseline; font-weight: 400\">Feel free to tweak things via the </span></span></span><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; vertical-align: baseline; font-weight: 400\">form builder. Every form submission is recorded in a </span></span></span><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; vertical-align: baseline; font-weight: 400\">r</span></span></span><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; vertical-align: baseline; font-weight: 400\">eport and can be visuali</span></span></span><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; vertical-align: baseline; font-weight: 400\">z</span></span></span><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; vertical-align: baseline; font-weight: 400\">ed.</span></span></span><br /></div><div><br /></div><div><span class=\"highlight\" style=\"background-color: rgba(0, 0, 0, 0)\"><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; vertical-align: baseline; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; letter-spacing: 0pt\">N</span></span></span></span><span class=\"highlight\" style=\"background-color: rgba(0, 0, 0, 0)\"><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; vertical-align: baseline; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; letter-spacing: 0pt\">ote: </span></span></span></span><span class=\"highlight\" style=\"background-color: rgba(0, 0, 0, 0)\"><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; font-variant: normal; text-decoration: none; letter-spacing: 0pt; font-weight: 400; vertical-align: baseline; font-style: normal\">If you're capturing sensitive data via a field,</span></span></span></span><span class=\"highlight\" style=\"background-color: rgba(0, 0, 0, 0)\"><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; font-variant: normal; text-decoration: none; letter-spacing: 0pt; font-weight: 400; vertical-align: baseline; font-style: normal\"> take a look at its properties to make it secured.</span></span></span></span><br /></div><div><span class=\"highlight\" style=\"background-color: rgba(0, 0, 0, 0)\"><span class=\"colour\" style=\"color: rgb(0, 0, 0)\"><span class=\"font\" style=\"font-family: Lato\"><span class=\"size\" style=\"font-size: 12pt; font-variant: normal; text-decoration: none; letter-spacing: 0pt; font-weight: 400; vertical-align: baseline; font-style: normal\"></span></span></span></span><br /></div>"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			What_do_you_want_to_track
+			(
+				type = picklist
+				displayname = "What do you want to track?"
+				maxchar = 100
+				values = {"Tasks","Bugs","Projects","Expenses","Assets","Something else"}
+	 			row = 1
+	 			column = 1   
+				width = large
+			)
+			Add_Tasks
+			(
+				type = section
+				displayname = "Add Tasks"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			Task_name
+			(
+    			type = text
+				displayname = "Task name"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Due_Date
+			(
+    			type = date
+				displayname = "Due Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Priority
+			(
+				type = picklist
+				maxchar = 100
+				values = {"High","Medium","Low"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+				type = picklist
+				displayname = " Status"
+				maxchar = 100
+				values = {"Yet to Start","In-Progress","In Review","Completed"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Description
+			(
+    			type = text
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Add_a_New_Bug
+			(
+				type = section
+				displayname = "Add a New Bug"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 101
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Bug_Title
+			(
+    			type = text
+				displayname = "Bug Title"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Date_Reported
+			(
+    			type = date
+				displayname = "Date Reported"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Severity
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Low","Medium","Critical"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Status1
+			(
+				type = picklist
+				displayname = "Status"
+				maxchar = 100
+				values = {"Open","Escalated","Closed"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Description1
+			(
+    			type = text
+				displayname = "Description"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Track_Projects
+			(
+				type = section
+				displayname = "Track Projects"
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Project_Name
+			(
+    			type = text
+				displayname = "Project Name"
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Project_Manager
+			(
+    			type = picklist
+				displayname = "Project Manager"
+				module = users
+				displayformat = [username]
+	 			row = 4
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Start_Date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			End_Date
+			(
+    			type = date
+				displayname = "End Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Status2
+			(
+				type = picklist
+				displayname = "Status"
+				maxchar = 100
+				values = {"Not Started","On-Track","Delayed","Live"}
+				others option = true
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Summary
+			(
+    			type = text
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Expense_Claim
+			(
+				type = section
+				displayname = "Expense Claim"
+				visibility = true
+	 			row = 5
+	 			column = 0   
+				width = medium
+			)
+			Expense_Date
+			(
+    			type = date
+				displayname = "Expense Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Amount
+			(
+				type = USD
+				format = commadotwestern
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Expense_Type
+			(
+				type = picklist
+				displayname = "Expense Type"
+				maxchar = 100
+				values = {"Travel - Client Meeting","Meals","Accommodation","Software Subscription"}
+				others option = true
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Notes
+			(
+    			type = text
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Track_Assets
+			(
+				type = section
+				displayname = "Track Assets"
+				visibility = true
+	 			row = 6
+	 			column = 0   
+				width = medium
+			)
+			Asset_Type
+			(
+				type = picklist
+				displayname = "Asset Type"
+				maxchar = 100
+				values = {"Laptop","Monitor","Mouse","Headphones","Mobile"}
+				others option = true
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Purchase_Date
+			(
+    			type = date
+				displayname = "Purchase Date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Usecase
+			(
+    			type = text
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Something_Else
+			(
+				type = section
+				displayname = "Something Else"
+				visibility = true
+	 			row = 7
+	 			column = 0   
+				width = medium
+			)
+			plain
+			(
+    			type = plaintext
+				value = "<div>\n <span style=\"font-family: Lato, sans-serif\" class=\"font\"><span style=\"font-size: 16px\" class=\"size\">Want to tailor this form to your specific needs? If this form doesn't cover your requirement, simply navigate to 'Edit this Application' at the top right to enter Edit Mode. </span></span>\n <br>\n</div>\n<div>\n <br>\n</div>\n<div>\n <span style=\"font-family: Lato, sans-serif\" class=\"font\"><span style=\"font-size: 16px\" class=\"size\">Here, you can open the form and add your unique fields.</span></span>\n <br>\n</div>\n<div>\n <br>\n</div>\n<div>\n <span style=\"font-family: Lato, sans-serif\" class=\"font\"><span style=\"font-size: 16px\" class=\"size\">For guidance on adding and customizing fields, <a style=\"color: rgb(0, 0, 238)\" rel=\"noopener noreferrer\" target=\"_blank\" href=\"https://help.zoho.com/portal/en/kb/creator/developer-guide/forms/add-and-manage-fields/articles/understand-fields\">click here to access</a> our quick guide.</span></span>\n <br>\n</div>"
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Student_Application
+		{
+			displayname = "Student Application"
+			success message = "Student Application Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Student_Name
+			(
+				type = picklist	
+				displayname = "Student Name"
+				values  = Student_Registration.ID
+    			displayformat = [" " + Student_name.first_name + " " + Student_name.last_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Opportunity_Type
+			(
+				type = picklist
+				displayname = "Opportunity Type"
+				maxchar = 100
+				values = {"Internship","Placement"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Internship_Opportunity
+			(
+				type = picklist	
+				displayname = "Internship Opportunity"
+				values  = Internship_Opportunity.ID
+    			displayformat = [Internship_Title]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Placement_Opportunity
+			(
+				type = picklist	
+				displayname = "Placement Opportunity"
+				values  = Placement_Opportunity.ID
+    			displayformat = [Job_Title]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Application_Date
+			(
+    			type = date
+				displayname = "Application Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Resume
+			(
+    			type = upload file
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Application_Status
+			(
+				type = picklist
+				displayname = "Application Status"
+				maxchar = 100
+				values = {"Applied","Under Review","Shortlisted","Rejected","Selected","Interview Scheduled"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Remarks
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Stage1","Stage2","Stage3","Shortlisted","Under Review","Interview Scheduled","Selected","Rejected","Applied"}
+			}
+		}
+		form Student_Registration
+		{
+			displayname = "Student Registration"
+			success message = "Student Registration Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Student_name
+			(
+    			type = name
+				displayname = "Student's name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Phone_number1
+			(
+    			type = phonenumber
+				displayname = "Phone number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Register_Number
+			(
+    			type = text
+				displayname = "Register Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Department
+			(
+				type = picklist
+				maxchar = 100
+				values = {"CSE","IT","ECE","EEE","Mechanical","Civil"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Year_of_study
+			(
+				type = picklist
+				displayname = "Year of study"
+				maxchar = 100
+				values = {"1st year","2nd year","3rd year","4th year"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have CGPA
+			(
+				type = decimal
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		list All_Bugs
+		{
+			displayName = "All Bugs"
+			show all rows from Self_Service_Form  [What_do_you_want_to_track == "Bugs"]  
+			(
+				What_do_you_want_to_track as "What do you want to track?"
+				Task_name as "Task name"
+				Due_Date as "Due Date"
+				Priority
+				Status as " Status"
+				Description
+				Auto_Number as "Auto Number"
+				Bug_Title as "Bug Title"
+				Date_Reported as "Date Reported"
+				Severity
+				Status1 as "Status"
+				Description1 as "Description"
+				Project_Name as "Project Name"
+				Project_Manager as "Project Manager"
+				Start_Date as "Start Date"
+				End_Date as "End Date"
+				Status2 as "Status"
+				Summary
+				Expense_Date as "Expense Date"
+				Amount
+				Expense_Type as "Expense Type"
+				Notes
+				Asset_Type as "Asset Type"
+				Purchase_Date as "Purchase Date"
+				Usecase
+			)
+		}
+		default list All_Trackings
+		{
+			displayName = "All Tasks"
+			show all rows from Self_Service_Form  [What_do_you_want_to_track == "Tasks"]  
+			(
+				Task_name as "Task name"
+				Priority
+				Status as " Status"
+				Auto_Number as "Auto Number"
+				Status1 as "Status"
+				Severity
+				Project_Manager as "Project Manager"
+				End_Date as "End Date"
+				Status2 as "Status"
+				Summary
+				Notes
+				Asset_Type as "Asset Type"
+				Purchase_Date as "Purchase Date"
+				Usecase
+				Due_Date as "Due Date"
+				Description
+			)
+		}
+		default list All_Student_Registrations
+		{
+			displayName = "All Student Registrations"
+			show all rows from Student_Registration    
+			(
+				Student_name  as "Student's name"
+				Email
+				Phone_number1 as "Phone number"
+				(
+					displayformat = plainnumber 
+				)
+				Register_Number as "Register Number"
+				Department
+				Year_of_study as "Year of study"
+				CGPA
+			)
+		}
+		default list Company_Registration_Report
+		{
+			displayName = "Company Registration. Report"
+			show all rows from Company_Registration    
+			(
+				Company_Name as "Company Name"
+				Industry
+				Contact_Person as "Contact Person"
+				Contact_Email as "Contact Email"
+				Contact_Phone as "Contact Phone"
+				(
+					displayformat = plainnumber 
+				)
+				Company_Website as "Company Website"
+				Company_Address  as "Company Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Company_Description as "Company Description"
+			)
+		}
+		default list All_Internship_Opportunities
+		{
+			displayName = "All Internship Opportunities"
+			show all rows from Internship_Opportunity    
+			(
+				Internship_Title as "Internship Title"
+				Company_name as "Company name"
+				Job_Description as "Job Description"
+				Stipend
+				Start_Date as "Start Date"
+				End_Date as "End Date"
+				Location
+				Status
+			)
+		}
+		default list All_Placement_Opportunities
+		{
+			displayName = "All Placement Opportunities"
+			show all rows from Placement_Opportunity    
+			(
+				Job_Title as "Job Title"
+				Company_Registration as "Company Registration."
+				Job_Description as "Job Description"
+				Minimum_CGPA as "Minimum CGPA"
+				Salary_Package_LPA as "Salary Package (LPA)"
+				Job_Location as "Job Location"
+				Application_Deadline as "Application Deadline"
+				Job_Type as "Job Type"
+				Status
+			)
+		}
+		default list All_Student_Applications
+		{
+			displayName = "All Student Applications"
+			show all rows from Student_Application    
+			(
+				Student_Name as "Student Name"
+				Opportunity_Type as "Opportunity Type"
+				Internship_Opportunity as "Internship Opportunity"
+				Placement_Opportunity as "Placement Opportunity"
+				Application_Date as "Application Date"
+				Resume
+				Application_Status as "Application Status"
+				Remarks
+			)
+		}
+		default list Interview_Scheduling_Report
+		{
+			displayName = "Interview Scheduling Report"
+			show all rows from Interview_Scheduling    
+			(
+				Student_Application as "Student Application"
+				Interview_Date as "Interview Date"
+				Interview_Time as "Interview Time"
+				Interview_Mode as "Interview Mode"
+				Interview_Round as "Interview Round"
+				Interview_Link_Venue as "Interview Link / Venue"
+				Interview_Status as "Interview Status"
+				Interview_Feedback as "Interview Feedback"
+			)
+		}
+		default list Internship_Progress_Tracking_Report
+		{
+			displayName = "Internship Progress Tracking Report"
+			show all rows from Internship_Progress_Tracking    
+			(
+				student_application as "Student Application"
+				internship_opportunity as "Internship Opportunity"
+				progress_update_date as "Progress Update Date"
+				tasks_completed as "Tasks Completed"
+				skills_learned as "Skills Learned"
+				progress_percentage as "Progress Percentage"
+				mentor_comments as "Mentor Comments"
+				internship_status as "Internship Status"
+				created_by as "Created By"
+				last_modified_date as "Last Modified Date"
+			)
+		}
+		default list Placement_and_Offer_Details_Report
+		{
+			displayName = "Placement and Offer Details Report"
+			show all rows from Placement_and_Offer_Details    
+			(
+				Student_Application as "Student Application"
+				Company_Name as "Company Name"
+				Job_Title as "Job Title"
+				Salary_Package_LPA as "Salary Package (LPA)"
+				Offer_Date as "Offer Date"
+				Joining_Date as "Joining Date"
+				Offer_Status as "Offer Status"
+				Offer_Letter as "Offer Letter"
+				Remarks
+			)
+		}
+	}
+	pages
+	{
+		page Tracker_Dashbaord
+		{
+			displayname = "Tracker Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '17px'\n\tpaddingLeft = '17px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '17px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#000000'\n\tsize = '24px'\n\tfontFamily = 'lato, arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\n\n\n\n\n\t  value = '\uD83C\uDF1F Welcome to Your Tracking Internal App'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '0px'\n\tpaddingLeft = '17px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#595959'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\n\n\n\n\n\t  value = 'Experience an app that works the way you do. Tailored for flexibility and efficiency, it can be designed to align perfectly with your workflow.'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Total_Students_Metric.stat.outlined.comfortable'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#F0F0F0'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '8px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '24px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#575757'\n\tsize = '13px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Registered Students'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='8px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#1C1C1C'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Student_Registration.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Total_Companies_Metric.stat.outlined.comfortable'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#F0F0F0'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '8px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '24px'\n\tpaddingLeft = '24px'\n\tpaddingRight = '24px'\n\tpaddingBottom = '24px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#575757'\n\tsize = '13px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Registered Companies'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='8px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#1C1C1C'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Company_Registration.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Total_Internships_Metric.stat.outlined.comfortable'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#F0F0F0'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '8px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '24px'\n\tpaddingLeft = '24px'\n\tpaddingRight = '24px'\n\tpaddingBottom = '24px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#575757'\n\tsize = '13px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Internship Opportunities'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='8px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#1C1C1C'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Internship_Opportunity.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Total_Placements_Metric.stat.outlined.comfortable'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#F0F0F0'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '8px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '24px'\n\tpaddingLeft = '24px'\n\tpaddingRight = '24px'\n\tpaddingBottom = '24px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#575757'\n\tsize = '13px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Placement Opportunities'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='8px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#1C1C1C'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Placement_Opportunity.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Total_Applications_Metri.stat.outlined.comfortable'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#F0F0F0'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '8px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '24px'\n\tpaddingLeft = '24px'\n\tpaddingRight = '24px'\n\tpaddingBottom = '24px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#575757'\n\tsize = '13px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Student Applications'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='8px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#1C1C1C'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Student_Application.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Total_Interviews_Metric.stat.outlined.comfortable'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#F0F0F0'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '8px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '24px'\n\tpaddingLeft = '24px'\n\tpaddingRight = '24px'\n\tpaddingBottom = '24px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#575757'\n\tsize = '13px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Interviews Scheduled'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='8px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#1C1C1C'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Interview_Scheduling.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Completed_Internships_Me.stat.outlined.comfortable'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#F0F0F0'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '8px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '24px'\n\tpaddingLeft = '24px'\n\tpaddingRight = '24px'\n\tpaddingBottom = '24px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#575757'\n\tsize = '13px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Completed Internships'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='8px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#1C1C1C'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'internship_status == &quot;Completed&quot;'\n\t  value = 'thisapp.Internship_Progress_Tracking.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Placement_Offers_Metric.stat.outlined.comfortable'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#F0F0F0'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '8px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '24px'\n\tpaddingLeft = '24px'\n\tpaddingRight = '24px'\n\tpaddingBottom = '24px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#575757'\n\tsize = '13px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Placement Offers Made'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='8px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = '#1C1C1C'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Offer_Status == &quot;Offered&quot;'\n\t  value = 'thisapp.Placement_and_Offer_Details.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='33%'\n   \t>\n\t<chart \n\telementName='Chart 3'\n\n\t\n\ttitle = 'Student Applications by Opportunity Type'\n\t\n\t\ttitleColor = '#222326'\n\ttype = 'Pie'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme'\n\tlegendPos = 'center.top'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Student_Application'\n\txfield = 'Opportunity_Type'\n\tyfields = 'count:ID'\n/>\n\n</column><column\n   \t\t width='33%'\n   \t>\n\t<chart \n\telementName='Chart 4'\n\n\t\n\ttitle = 'Internship Status Distribution'\n\t\n\t\ttitleColor = '#222326'\n\ttype = 'Column'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme'\n\tlegendPos = 'center.top'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Internship_Progress_Tracking'\n\txfield = 'internship_status'\n\tyfields = 'count:ID'\n/>\n\n</column><column\n   \t\t width='34%'\n   \t>\n\t<chart \n\telementName='Chart 5'\n\n\t\n\ttitle = 'Placement Offer Status Distribution'\n\t\n\t\ttitleColor = '#222326'\n\ttype = 'Column'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme'\n\tlegendPos = 'center.top'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Placement_and_Offer_Details'\n\txfield = 'Offer_Status'\n\tyfields = 'count:ID'\n/>\n\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+
+
+		workflow
+		{
+		form
+		{
+			show_hide_fields as "show/hide fields"
+			{
+				type =  form
+				form = Self_Service_Form
+
+				record event = on add or edit
+
+				field rules
+				{
+					actions  (What_do_you_want_to_track == "Tasks")
+					{
+						hide Add_a_New_Bug,Track_Projects,Track_Assets,Expense_Claim,Something_Else;
+					}
+					actions  (What_do_you_want_to_track == "Bugs")
+					{
+						hide Add_Tasks,Track_Projects,Track_Assets,Expense_Claim,Something_Else;
+					}
+					actions  (What_do_you_want_to_track == "Projects")
+					{
+						hide Add_Tasks,Add_a_New_Bug,Track_Assets,Expense_Claim,Something_Else;
+					}
+					actions  (What_do_you_want_to_track == "Assets")
+					{
+						hide Add_Tasks,Add_a_New_Bug,Expense_Claim,Track_Projects,Something_Else;
+					}
+					actions  (What_do_you_want_to_track == "Expenses")
+					{
+						hide Add_Tasks,Add_a_New_Bug,Track_Assets,Track_Projects,Something_Else;
+					}
+					actions  (What_do_you_want_to_track is null)
+					{
+						hide Expense_Claim,Add_Tasks,Add_a_New_Bug,Track_Assets,Track_Projects,Something_Else;
+					}
+					actions  (What_do_you_want_to_track == "Something else")
+					{
+						hide Expense_Claim,Add_Tasks,Add_a_New_Bug,Track_Assets,Track_Projects;
+					}
+				}
+
+			}
+			Set_Application_Status_on_Submit as "Set Application Status on Submit"
+			{
+				type =  form
+				form = Student_Application
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Set the Application Status to 'Applied' upon successful submission
+										input.Application_Status = "Applied";
+						)
+					}
+				}
+
+			}
+			Set_Interview_Status_on_Submit as "Set Interview Status on Submit"
+			{
+				type =  form
+				form = Interview_Scheduling
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Update the Interview_Status field to 'Scheduled' for the current record
+										input.Interview_Status = "Scheduled";
+						)
+					}
+				}
+
+			}
+			Internship_Progress_Completion_Automation as "Internship Progress Completion Automation"
+			{
+				type =  form
+				form = Internship_Progress_Tracking
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Validate Progress Percentage is between 0 and 100
+										if(input.progress_percentage < 0 || input.progress_percentage > 100)
+										{
+											info "Progress Percentage must be between 0 and 100";
+											// Note: cancel submit is only available in On Validate actions. 
+											// If this script runs on On Success, validation errors should be handled via alerts or custom logic.
+										}
+										// If Progress Percentage equals 100, set Internship Status to Completed
+										if(input.progress_percentage == 100)
+										{
+											input.internship_status = "Completed";
+										}
+						)
+					}
+				}
+
+			}
+			Initialize_Placement_Offer_Status as "Initialize Placement Offer Status"
+			{
+				type =  form
+				form = Placement_and_Offer_Details
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Set the Offer_Status field to "Offered" on successful submission
+										input.Offer_Status = "Offered";
+						)
+					}
+				}
+
+			}
+			Notify_Placement_Officer_On_New_Application as "Notify Placement Officer on New Application"
+			{
+				type =  form
+				form = Student_Application
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Fetch student name from the lookup field
+										studentRecord = Student_Registration[ID == input.Student_Name];
+										studentName = studentRecord.Student_name.first_name;
+										// Prepare email details
+										emailSubject = "New Student Application Received - " + input.Opportunity_Type;
+										emailMessage = "<p>Dear Placement Officer,</p>";
+										emailMessage = emailMessage + "<p>A new application has been submitted with the following details:</p>";
+										emailMessage = emailMessage + "<ul>";
+										emailMessage = emailMessage + "<li><strong>Student Name:</strong> " + studentName + "</li>";
+										emailMessage = emailMessage + "<li><strong>Opportunity Type:</strong> " + input.Opportunity_Type + "</li>";
+										emailMessage = emailMessage + "<li><strong>Application Date:</strong> " + toString(input.Application_Date,"MMM dd, yyyy") + "</li>";
+										emailMessage = emailMessage + "<li><strong>Application Status:</strong> " + input.Application_Status + "</li>";
+										emailMessage = emailMessage + "</ul>";
+										emailMessage = emailMessage + "<p>Please review the application at your earliest convenience.</p>";
+										// Send email notification
+										sendmail
+										[
+											from :zoho.adminuserid
+											to :zoho.adminuserid
+											subject :emailSubject
+											message :emailMessage
+											content type :HTML
+										]
+						)
+					}
+				}
+
+			}
+			Validate_Progress_Percentage_Range as "Validate Progress Percentage Range"
+			{
+				type =  form
+				form = Internship_Progress_Tracking
+
+				record event = on add
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.progress_percentage < 0 || input.progress_percentage > 100)
+										{
+											alert "Progress Percentage must be between 0 and 100";
+										}
+						)
+					}
+				}
+
+			}
+			Student_Application_Approval_Workflow as "Student Application Approval Workflow"
+			{
+				type =  form
+				form = Student_Application
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Fetch the student name details from the lookup field
+										studentRecord = Student_Registration[ID == input.Student_Name];
+										// Construct the approval message with student details
+										approvalMessage = "<p>Dear Administrator,</p>" + "<p>A new student application has been submitted for your review.</p>" + "<p><strong>Student Name:</strong> " + studentRecord.Student_name.first_name + " " + studentRecord.Student_name.last_name + "</p>" + "<p><strong>Email:</strong> " + studentRecord.Email + "</p>" + "<p><strong>Application Type:</strong> " + input.Opportunity_Type + "</p>" + "<p><strong>Opportunity:</strong> " + input.Internship_Opportunity + "</p>" + "<p>Please review the application and take appropriate action.</p>" + "<p>Best Regards,</p>" + "<p>Student Portal System</p>";
+										// Send email to administrator with approval instructions
+										sendmail
+										[
+											from :zoho.adminuserid
+											to :zoho.adminuserid
+											subject :"New Student Application for Approval - " + studentRecord.Student_name.first_name + " " + studentRecord.Student_name.last_name
+											message :approvalMessage
+											content type :HTML
+										]
+										// Update the application status to 'Under Review'
+										input.Application_Status = "Under Review";
+										// Display success message to the user
+										success message "Your application has been submitted successfully and is under review by the administrator.";
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			Daily_Pending_Application as "Daily Pending Application Reminder"
+			{
+				type =  schedule
+					status = inactive
+				start = "2026-11-01 09:00:00"
+				frequency = daily
+				time zone = "UTC"
+				on start
+				{
+					actions 
+					{
+						sendmail
+						(
+							from : "zoho.adminuserid"
+							to : "thendral2311@gmail.com"
+							subject : "Daily Pending Student Application Reminder"
+							message : "<div>Dear Placement Officer, <br></div><div><br></div><div>This is a daily reminder to review pending student applications in the Internship and Placement Tracking System.<br></div><div><br></div><div>Please check the Student Application records and update the application statuses accordingly.<br></div><div><br></div><div>Thank you.<br></div>"
+						)
+					}
+				}
+			}
+			Weekly_Application_Summar as "Weekly Application Summary"
+			{
+				type =  schedule
+					status = inactive
+				start = "2026-11-05 09:00:00"
+				frequency = weekly
+				time zone = "UTC"
+				on start
+				{
+					actions 
+					{
+						sendmail
+						(
+							from : "zoho.adminuserid"
+							to : "thendral2311@gmail.com"
+							subject : "Weekly Internship and Placement Reminder"
+							message : "<p><span>Hello,</span><br></p><p><span>This </span><span>is </span><span>the </span><span>weekly </span><span>reminder </span><span>for </span><span>the </span><span>Internship </span><span>and </span><span>Placement </span><span>Tracking </span><span>System.</span><br></p><p><span>Please </span><span>review </span><span>pending </span><span>student </span><span>applications, </span><span>upcoming </span><span>interviews, </span><span>internship </span><span>progress, </span><span>and </span><span>placement </span><span>updates.</span><br></p><p><span>Thank </span><span>you.</span><br></p><div><br></div>"
+						)
+					}
+				}
+			}
+			Monthly_Placement_and_Int as "Monthly Placement and Internship Summary"
+			{
+				type =  schedule
+					status = inactive
+				start = "2026-11-07 09:00:00"
+				frequency = monthly
+				time zone = "UTC"
+				on start
+				{
+					actions 
+					{
+						sendmail
+						(
+							from : "zoho.adminuserid"
+							to : "thendral2311@gmail.com"
+							subject : "Monthly Placement and Internship Summary"
+							message : "<div><span>Hello, Please review the monthly student registration, company details, internship opportunities, placement applications, interviews, and offer updates. Thank you.</span><br></div>"
+						)
+					}
+				}
+			}
+		}
+
+		approval
+		{
+			Student_Application_Appro as "Student Application Approval"
+			{
+				type =  approval
+				form = Student_Application
+				display fields = [Student_Name,Opportunity_Type,Internship_Opportunity,Placement_Opportunity,Application_Date,Application_Status,Remarks]
+				on start
+				{
+				}
+				on level 1
+				{
+					on approve 
+					{
+						actions 
+						{
+							sendmail
+							(
+								from : "zoho.loginuserid"
+								to : approver.submitter
+								subject : "Approval Request"
+								message : "Your request has been approved."
+							)
+						}
+					}
+					on reject
+					{
+
+						actions 
+						{
+							sendmail
+							(
+								from : "zoho.loginuserid"
+								to : approver.submitter
+								subject : "Approval Request"
+								message : "Your request has been rejected."
+							)
+						}
+					}
+				}
+			}
+		}
+
+		blueprint
+		{
+    			Student_Application_Appro as "Student Application Approval Process"
+    			{
+        			type = Blueprint
+        			form = Student_Application
+        			start
+        			{
+            			start stage = "Applied"
+            			chart data
+            			{
+                			from port : B
+                			to port   : T3
+                			position  : "0 0"
+                			path      : [27.849999999999994,36.84,27.849999999999994,46.84,27.849999999999994,48.42,27.849999999999998,48.42,27.849999999999998,50,27.849999999999998,60]
+            			}
+        			}
+        			stages
+        			{
+           			"Shortlisted"
+           			{
+               			chart data
+               			{
+                   			position : "-24.75830815709969 214.63344481605353"
+               			}
+           			}
+           			"Under Review"
+           			{
+               			chart data
+               			{
+                   			position : "-33.75830815709969 136.6334448160535"
+               			}
+           			}
+           			"Interview Scheduled"
+           			{
+               			chart data
+               			{
+                   			position : "-56.75830815709969 290.6334448160535"
+               			}
+           			}
+           			"Selected"
+           			{
+               			chart data
+               			{
+                   			position : "-189.7583081570997 382.6334448160535"
+               			}
+           			}
+           			"Rejected"
+           			{
+               			chart data
+               			{
+                   			position : "140.2416918429003 385.6334448160535"
+               			}
+           			}
+           			"Applied"
+           			{
+               			chart data
+               			{
+                   			position : "-17.788550822903776 60"
+               			}
+           			}
+        			}
+        			transitions
+        			{
+    				Move_to_Under_Review as "Move to Under Review"
+    				{
+         				type = normal
+         				from stage = "Applied"
+         				to stage = "Under Review"
+         				before
+         				{
+         				}
+         				during
+         				{
+            				action = update_fields
+            				workflow status = true
+            				visible fields = [Application_Status]
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B3
+             				to port   : T3
+             				path      : [27.849999999999998,111.60782979522162,27.849999999999998,121.60782979522162,27.849999999999998,124.12063730563756,31.480225881136107,124.12063730563756,31.480225881136107,126.6334448160535,31.480225881136107,136.6334448160535]
+        				}
+  				}
+    				Reject_Candidate as "Reject Candidate"
+    				{
+         				type = normal
+         				from stage = "Interview Scheduled"
+         				to stage = "Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B4
+             				to port   : T3
+             				path      : [52.95504158919388,342.2412746112751,52.95504158919388,352.2412746112751,52.95504158919388,363.9373597136643,189.02674229959314,363.9373597136643,189.02674229959314,375.6334448160535,189.02674229959314,385.6334448160535]
+        				}
+  				}
+    				Schedule_Interview as "Schedule Interview"
+    				{
+         				type = normal
+         				from stage = "Shortlisted"
+         				to stage = "Interview Scheduled"
+         				before
+         				{
+         				}
+         				during
+         				{
+            				action = update_fields
+            				workflow status = true
+            				visible fields = [Application_Status]
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B3
+             				to port   : T3
+             				path      : [30.4877179465658,266.2412746112751,30.4877179465658,276.2412746112751,30.4877179465658,278.4373597136643,27.901704152620496,278.4373597136643,27.901704152620496,280.6334448160535,27.901704152620496,290.6334448160535]
+        				}
+  				}
+    				Select_Candidate as "Select Candidate"
+    				{
+         				type = normal
+         				from stage = "Interview Scheduled"
+         				to stage = "Selected"
+         				before
+         				{
+         				}
+         				during
+         				{
+            				action = update_fields
+            				workflow status = true
+            				visible fields = [Application_Status]
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B2
+             				to port   : T3
+             				path      : [2.848366716047096,342.2412746112751,2.848366716047096,352.2412746112751,2.848366716047096,362.4373597136643,-141.3827654518717,362.4373597136643,-141.3827654518717,372.6334448160535,-141.3827654518717,382.6334448160535]
+        				}
+  				}
+    				Shortlist_Application as "Shortlist Application"
+    				{
+         				type = normal
+         				from stage = "Under Review"
+         				to stage = "Shortlisted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+         				chart data
+         				{
+             				from port : B3
+             				to port   : T3
+             				path      : [31.480225881136107,188.24127461127512,31.480225881136107,198.24127461127512,31.480225881136107,201.4373597136643,30.4877179465658,201.4373597136643,30.4877179465658,204.63344481605353,30.4877179465658,214.63344481605353]
+        				}
+  				}
+        			}
+    			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		icon
+		{
+			text = "MYF"
+			background color = "theme"
+			foreground color = "#ffffff"
+		}
+	}
+
+	web
+	{
+		forms
+		{
+			form Company_Registration
+			{
+				label placement = left
+			}
+			form Internship_Opportunity
+			{
+				label placement = left
+			}
+			form Internship_Progress_Tracking
+			{
+				label placement = left
+			}
+			form Interview_Scheduling
+			{
+				label placement = left
+			}
+			form Placement_and_Offer_Details
+			{
+				label placement = left
+			}
+			form Placement_Opportunity
+			{
+				label placement = left
+			}
+			form Self_Service_Form
+			{
+				label placement = left
+			}
+			form Student_Application
+			{
+				label placement = left
+			}
+			form Student_Registration
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Bugs
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Bug_Title as "Bug Title"
+								Date_Reported as "Date Reported"
+								Severity
+								Status1 as "Status"
+								Description1 as "Description"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								What_do_you_want_to_track as "What do you want to track?"
+								Task_name as "Task name"
+								Due_Date as "Due Date"
+								Priority
+								Status as " Status"
+								Description
+								Auto_Number as "Auto Number"
+								Bug_Title as "Bug Title"
+								Date_Reported as "Date Reported"
+								Severity
+								Status1 as "Status"
+								Description1 as "Description"
+								Project_Name as "Project Name"
+								Project_Manager as "Project Manager"
+								Start_Date as "Start Date"
+								End_Date as "End Date"
+								Status2 as "Status"
+								Summary
+								Expense_Date as "Expense Date"
+								Amount
+								Expense_Type as "Expense Type"
+								Notes
+								Asset_Type as "Asset Type"
+								Purchase_Date as "Purchase Date"
+								Usecase
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Trackings
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Task_name as "Task name"
+								Due_Date as "Due Date"
+								Priority
+								Status as " Status"
+								Description
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Task_name as "Task name"
+								Priority
+								Status as " Status"
+								Auto_Number as "Auto Number"
+								Status1 as "Status"
+								Severity
+								Project_Manager as "Project Manager"
+								End_Date as "End Date"
+								Status2 as "Status"
+								Summary
+								Notes
+								Asset_Type as "Asset Type"
+								Purchase_Date as "Purchase Date"
+								Usecase
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Student_Registrations
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_name as "Student's name"
+								Email
+								Phone_number1 as "Phone number"
+								Register_Number as "Register Number"
+								Department
+								Year_of_study as "Year of study"
+								CGPA
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_name as "Student's name"
+								Email
+								Phone_number1 as "Phone number"
+								Register_Number as "Register Number"
+								Department
+								Year_of_study as "Year of study"
+								CGPA
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Company_Registration_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Company_Name as "Company Name"
+								Industry
+								Contact_Person as "Contact Person"
+								Contact_Email as "Contact Email"
+								Contact_Phone as "Contact Phone"
+								Company_Website as "Company Website"
+								Company_Address as "Company Address"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Company_Name as "Company Name"
+								Industry
+								Contact_Person as "Contact Person"
+								Contact_Email as "Contact Email"
+								Contact_Phone as "Contact Phone"
+								Company_Website as "Company Website"
+								Company_Address as "Company Address"
+								Company_Description as "Company Description"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Internship_Opportunities
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Internship_Title as "Internship Title"
+								Company_name as "Company name"
+								Job_Description as "Job Description"
+								Stipend
+								Start_Date as "Start Date"
+								End_Date as "End Date"
+								Location
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Internship_Title as "Internship Title"
+								Company_name as "Company name"
+								Job_Description as "Job Description"
+								Stipend
+								Start_Date as "Start Date"
+								End_Date as "End Date"
+								Location
+								Status
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Placement_Opportunities
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Job_Title as "Job Title"
+								Company_Registration as "Company Registration."
+								Job_Description as "Job Description"
+								Minimum_CGPA as "Minimum CGPA"
+								Salary_Package_LPA as "Salary Package (LPA)"
+								Job_Location as "Job Location"
+								Application_Deadline as "Application Deadline"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Job_Title as "Job Title"
+								Company_Registration as "Company Registration."
+								Job_Description as "Job Description"
+								Minimum_CGPA as "Minimum CGPA"
+								Salary_Package_LPA as "Salary Package (LPA)"
+								Job_Location as "Job Location"
+								Application_Deadline as "Application Deadline"
+								Job_Type as "Job Type"
+								Status
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Student_Applications
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_Name as "Student Name"
+								Opportunity_Type as "Opportunity Type"
+								Internship_Opportunity as "Internship Opportunity"
+								Placement_Opportunity as "Placement Opportunity"
+								Application_Date as "Application Date"
+								Resume
+								Application_Status as "Application Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_Name as "Student Name"
+								Opportunity_Type as "Opportunity Type"
+								Internship_Opportunity as "Internship Opportunity"
+								Placement_Opportunity as "Placement Opportunity"
+								Application_Date as "Application Date"
+								Resume
+								Application_Status as "Application Status"
+								Remarks
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Interview_Scheduling_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_Application as "Student Application"
+								Interview_Date as "Interview Date"
+								Interview_Time as "Interview Time"
+								Interview_Mode as "Interview Mode"
+								Interview_Round as "Interview Round"
+								Interview_Link_Venue as "Interview Link / Venue"
+								Interview_Status as "Interview Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_Application as "Student Application"
+								Interview_Date as "Interview Date"
+								Interview_Time as "Interview Time"
+								Interview_Mode as "Interview Mode"
+								Interview_Round as "Interview Round"
+								Interview_Link_Venue as "Interview Link / Venue"
+								Interview_Status as "Interview Status"
+								Interview_Feedback as "Interview Feedback"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Internship_Progress_Tracking_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student_application as "Student Application"
+								internship_opportunity as "Internship Opportunity"
+								progress_update_date as "Progress Update Date"
+								tasks_completed as "Tasks Completed"
+								skills_learned as "Skills Learned"
+								progress_percentage as "Progress Percentage"
+								mentor_comments as "Mentor Comments"
+								internship_status as "Internship Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student_application as "Student Application"
+								internship_opportunity as "Internship Opportunity"
+								progress_update_date as "Progress Update Date"
+								tasks_completed as "Tasks Completed"
+								skills_learned as "Skills Learned"
+								progress_percentage as "Progress Percentage"
+								mentor_comments as "Mentor Comments"
+								internship_status as "Internship Status"
+								created_by as "Created By"
+								last_modified_date as "Last Modified Date"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Placement_and_Offer_Details_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_Application as "Student Application"
+								Company_Name as "Company Name"
+								Job_Title as "Job Title"
+								Salary_Package_LPA as "Salary Package (LPA)"
+								Offer_Date as "Offer Date"
+								Joining_Date as "Joining Date"
+								Offer_Status as "Offer Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_Application as "Student Application"
+								Company_Name as "Company Name"
+								Job_Title as "Job Title"
+								Salary_Package_LPA as "Salary Package (LPA)"
+								Offer_Date as "Offer Date"
+								Joining_Date as "Joining Date"
+								Offer_Status as "Offer Status"
+								Offer_Letter as "Offer Letter"
+								Remarks
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "space"
+				icon = "tech-desktop"
+
+				section Home
+				{
+					displayname = "Tracker Dashboard"
+					icon = "tech-desktop"
+					page Tracker_Dashbaord
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section All_Reports
+				{
+					displayname = "All Reports"
+					icon = "arrows-1-circle-down-12"
+					report All_Bugs
+					{
+						icon = "design-bullet-list-69"
+					}
+					report All_Trackings
+					{
+						icon = "design-bullet-list-69"
+					}
+				}
+				section Add_New
+				{
+					displayname = "Add New"
+					icon = "ui-1-simple-add"
+					form  Self_Service_Form
+					{
+						icon = "design-2-form"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = connection
+						displayname = "Connection"
+						icon = "tech-2-device-connection"
+					}
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Task"
+						icon = "design-todo"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Task"
+						icon = "ui-2-hourglass"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Student_Registrations
+				{
+					displayname = "Student Registrations"
+					icon = "education-pencil-47"
+					form  Student_Registration
+					{
+						icon = "education-pencil-47"
+					}
+					report All_Student_Registrations
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Company_Registration
+				{
+					displayname = "Company Registration."
+					icon = "business-tie-02"
+					form  Company_Registration
+					{
+						icon = "business-tie-02"
+					}
+					report Company_Registration_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Internship_Opportunities
+				{
+					displayname = "Internship Opportunities"
+					icon = "education-pencil-47"
+					form  Internship_Opportunity
+					{
+						icon = "users-2-a-time"
+					}
+					report All_Internship_Opportunities
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Placement_Opportunities
+				{
+					displayname = "Placement Opportunities"
+					icon = "food-microwave"
+					form  Placement_Opportunity
+					{
+						icon = "media-1-camera-compact"
+					}
+					report All_Placement_Opportunities
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Student_Applications
+				{
+					displayname = "Student Applications"
+					icon = "education-pencil-47"
+					form  Student_Application
+					{
+						icon = "education-pencil-47"
+					}
+					report All_Student_Applications
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Interview_Scheduling
+				{
+					displayname = "Interview Scheduling"
+					icon = "tech-webcam-38"
+					form  Interview_Scheduling
+					{
+						icon = "tech-webcam-38"
+					}
+					report Interview_Scheduling_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Internship_Progress_Tracking
+				{
+					displayname = "Internship Progress Tracking"
+					icon = "shopping-delivery-track"
+					form  Internship_Progress_Tracking
+					{
+						icon = "shopping-delivery-track"
+					}
+					report Internship_Progress_Tracking_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Placement_and_Offer_Details
+				{
+					displayname = "Placement and Offer Details"
+					icon = "sport-cardio"
+					form  Placement_and_Offer_Details
+					{
+						icon = "sport-cardio"
+					}
+					report Placement_and_Offer_Details_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+					show = {section,component}
+				}
+			}
+		}
+		customize
+		{
+			font = "lato"
+			color options
+			{
+				color = "11"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Company_Registration
+			{
+				label placement = auto
+			}
+			form Internship_Opportunity
+			{
+				label placement = auto
+			}
+			form Internship_Progress_Tracking
+			{
+				label placement = auto
+			}
+			form Interview_Scheduling
+			{
+				label placement = auto
+			}
+			form Placement_and_Offer_Details
+			{
+				label placement = auto
+			}
+			form Placement_Opportunity
+			{
+				label placement = auto
+			}
+			form Self_Service_Form
+			{
+				label placement = auto
+			}
+			form Student_Application
+			{
+				label placement = auto
+			}
+			form Student_Registration
+			{
+				label placement = auto
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "space"
+				icon = "tech-desktop"
+
+				section Add_New
+				{
+					displayname = "Add New"
+					icon = "travel-passport"
+					form  Self_Service_Form
+					{
+						icon = "design-2-form"
+					}
+				}
+				section Tracker_Dashbaord
+				{
+					displayname = "Tracker Dashbaord"
+					icon = "shopping-delivery-track"
+					page Tracker_Dashbaord
+					{
+						icon = "shopping-delivery-track"
+					}
+				}
+				section All_Reports
+				{
+					displayname = "All Reports"
+					icon = "business-laptop-71"
+					report All_Bugs
+					{
+						icon = "design-bullet-list-69"
+					}
+					report All_Trackings
+					{
+						icon = "travel-world"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = connection
+						displayname = "Connection"
+						icon = "tech-2-device-connection"
+					}
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Task"
+						icon = "design-todo"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Task"
+						icon = "ui-2-hourglass"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Student_Registrations
+				{
+					displayname = "Student Registrations"
+					icon = "education-pencil-47"
+					form  Student_Registration
+					{
+						icon = "education-pencil-47"
+					}
+					report All_Student_Registrations
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Company_Registration
+				{
+					displayname = "Company Registration."
+					icon = "business-tie-02"
+					form  Company_Registration
+					{
+						icon = "business-tie-02"
+					}
+					report Company_Registration_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Internship_Opportunities
+				{
+					displayname = "Internship Opportunities"
+					icon = "education-pencil-47"
+					form  Internship_Opportunity
+					{
+						icon = "users-2-a-time"
+					}
+					report All_Internship_Opportunities
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Placement_Opportunities
+				{
+					displayname = "Placement Opportunities"
+					icon = "food-microwave"
+					form  Placement_Opportunity
+					{
+						icon = "media-1-camera-compact"
+					}
+					report All_Placement_Opportunities
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Student_Applications
+				{
+					displayname = "Student Applications"
+					icon = "education-pencil-47"
+					form  Student_Application
+					{
+						icon = "education-pencil-47"
+					}
+					report All_Student_Applications
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Interview_Scheduling
+				{
+					displayname = "Interview Scheduling"
+					icon = "tech-webcam-38"
+					form  Interview_Scheduling
+					{
+						icon = "tech-webcam-38"
+					}
+					report Interview_Scheduling_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Internship_Progress_Tracking
+				{
+					displayname = "Internship Progress Tracking"
+					icon = "shopping-delivery-track"
+					form  Internship_Progress_Tracking
+					{
+						icon = "shopping-delivery-track"
+					}
+					report Internship_Progress_Tracking_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Placement_and_Offer_Details
+				{
+					displayname = "Placement and Offer Details"
+					icon = "sport-cardio"
+					form  Placement_and_Offer_Details
+					{
+						icon = "sport-cardio"
+					}
+					report Placement_and_Offer_Details_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+					show = {component}
+				}
+			}
+		}
+		customize
+		{
+			layout = onecolumn
+			font = "default"
+			style = "1"
+			color options
+			{
+				color = blue
+			}
+			logo
+			{
+				preference = "app_icon"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Company_Registration
+			{
+				label placement = auto
+			}
+			form Internship_Opportunity
+			{
+				label placement = auto
+			}
+			form Internship_Progress_Tracking
+			{
+				label placement = auto
+			}
+			form Interview_Scheduling
+			{
+				label placement = auto
+			}
+			form Placement_and_Offer_Details
+			{
+				label placement = auto
+			}
+			form Placement_Opportunity
+			{
+				label placement = auto
+			}
+			form Self_Service_Form
+			{
+				label placement = auto
+			}
+			form Student_Application
+			{
+				label placement = auto
+			}
+			form Student_Registration
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "app_icon"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
